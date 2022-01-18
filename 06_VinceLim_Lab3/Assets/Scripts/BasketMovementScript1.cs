@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BasketMovementScript : MonoBehaviour
+public class BasketMovementScript1 : MonoBehaviour
 {
     public float speed;
 
@@ -31,7 +31,7 @@ public class BasketMovementScript : MonoBehaviour
 
         if (Score >= 100)
         {
-            SceneManager.LoadScene("GamePlay_Level 2");
+            SceneManager.LoadScene("WinScene");
         }
 
 
