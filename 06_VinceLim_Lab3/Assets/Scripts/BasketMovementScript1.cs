@@ -15,6 +15,10 @@ public class BasketMovementScript1 : MonoBehaviour
 
     public Text scoreText;
 
+    public AudioSource FruitSource;
+
+    public AudioClip Fruitclip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,8 @@ public class BasketMovementScript1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Healthy")
         {
+            FruitSource.PlayOneShot(Fruitclip);
+
             Score += 10;
 
             scoreText.text = "Score : " + Score;

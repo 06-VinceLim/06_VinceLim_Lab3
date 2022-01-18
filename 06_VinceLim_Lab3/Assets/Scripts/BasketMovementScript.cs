@@ -15,10 +15,16 @@ public class BasketMovementScript : MonoBehaviour
 
     public Text scoreText;
 
+    public AudioSource FruitSource;
+
+    public AudioClip Fruitclip;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -41,6 +47,9 @@ public class BasketMovementScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Healthy")
         {
+
+            FruitSource.PlayOneShot(Fruitclip);
+
             Score += 10;
 
             scoreText.text = "Score : " + Score;
