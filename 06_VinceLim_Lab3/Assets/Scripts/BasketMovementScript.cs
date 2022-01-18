@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasketMovementScript : MonoBehaviour
 {
     public float speed;
 
-    float minusXLimit = -9.0f;
-    float plusXLimit = 9.0f;
 
     public GameObject basket;
+
+    int Score;
+
+    public Text scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,34 +25,28 @@ public class BasketMovementScript : MonoBehaviour
     {
 
         float horizontalInput = Input.GetAxis("Horizontal");
-        //To Check basket limit of X to ensure it stay on screen.
-        if (basket.transform.position.x > -10.0f || basket.transform.position.x < 10.0f)
+
+        transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
+
+
+
+
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Healthy")
         {
-            transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
+            Score += 10;
+
+            scoreText.text = "Score : " + Score;
+
+            Destroy(collision.gameObject);
         }
-        else
-        {
-            speed = 0.0f;
-        }
-/*        if (basket.transform.position.x < -10.0f & Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            speed = 5.0f;
-        }
-        if (basket.transform.position.x < 10.0f & Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            speed = 5.0f;
-        }*/
-
-
-       // transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
-
-        
-       
-
     }
 
 
 
-    
+
 
 }
