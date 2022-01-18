@@ -47,6 +47,11 @@ public class BasketMovementScript : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "Unhealthy")
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
 
